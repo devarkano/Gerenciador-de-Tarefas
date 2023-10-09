@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gerenciador de Tarefas</title>
+</head>
+    <style>@import url(index.css);</style>
+    <h1>Gerenciador de Tarefas</h1>
+
+    <form id="task-form">
+        <input type="text" id="task-input" placeholder="Adicionar tarefa" required>
+        <input type="datetime-local" id="deadline-input" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="task-list">
+        {% for task in tasks %}
+            <li>
+                <span class="task-name">{{ task['task'] }}</span>
+                <span class="deadline">{{ task['deadline'] }}</span>
+                <button class="delete-button" data-index="{{ loop.index0 }}">Deletar</button>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
